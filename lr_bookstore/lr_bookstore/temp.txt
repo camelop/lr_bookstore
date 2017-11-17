@@ -1,0 +1,16 @@
+void initOpcode() {
+	opcode["load"] = opload;
+	opcode["exit"] = opexit;
+	opcode["su"] = opsu;
+	opcode["logout"] = oplogout;
+	opcode["useradd"] = opuseradd;
+	opcode["register"] = opregister;
+	opcode["delete"] = opdelete;
+	opcode["passwd"] = oppasswd;
+	opcode["select"] = opselect;
+	opcode["modify"] = opmodify;
+	opcode["import"] = opimport;
+	opcode["show"] = opshow;
+	opcode["buy"] = opbuy;
+	opcode["report"] = opreport;
+}
