@@ -52,6 +52,11 @@ public:
 	operator string() const{
 		return data;
 	}
+
+	friend ostream& operator << (ostream& os, const lstring &rhs) {
+		os << (string)(rhs);
+		return os;
+	}
 };
 
 template<int cap>

@@ -7,6 +7,7 @@
 #include "database.hpp"
 #include "user.hpp"
 #include "warehouse.hpp"
+#include "stringTo.hpp"
 
 using namespace std;
 
@@ -162,19 +163,52 @@ public:
 			break;
 
 		case opmodify:
-			//TODO
+			if (us.access() < 3) invalid;
+			if (words.size() < 2) invalid;
+			if (!wh.modify(selected, message)) invalid;
+			break;
+
 		case opimport:
-			//TODO
+			if (us.access() < 3) invalid;
+			if (words.size() != 3) invalid;
+			{
+				if (selected == "") invalid;
+				if (!wh.import(selected, stringToInt(words[1]), stringToDouble(words[2])))
+					invalid;
+			}
+			break;
+
 		case opshow:
-			//TODO
+			if (words.size()>1 && words[1] == "finance") {
+				if (us.access() < 7) invalid;
+				if (words.size() > 3) invalid;
+				if (words.size() == 2) {
+					wh.show_finance(-1);
+				}
+				else {
+					wh.show_finance(stringToInt(words[2]));
+				}
+			}
+			else {
+				if (us.access() < 1) invalid;
+				if (!wh.show(message)) invalid;
+			}
+			break;
+
 		case opbuy:
-			//TODO
+			if (us.access() < 1) invalid;
+			if (words.size() != 3) invalid;
+			if (!wh.buy(words[1], stringToInt(words[2]))) invalid;
+			break;
+
 		case opreport:
 			cout << "invictus maneo" << endl;
 			break;
+
 		case oplog:
 			cout << "A piece of wood here" << endl;
 			break;
+
 		default:
 			invalid;
 		}

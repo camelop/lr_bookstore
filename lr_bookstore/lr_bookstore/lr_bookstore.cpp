@@ -32,6 +32,7 @@ int main() {
 	initOpcode();
 	Interface interface;
 	string mes;
+	interface.receive("su root sjtu");
 	cout << interface.currentUser() << "@";
 	while (getline(cin, mes)) {
 		cout.flush();

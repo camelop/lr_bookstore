@@ -148,6 +148,35 @@ public:
 		}
 	}
 
+	vector<V> all() {
+		vector<V> ret;
+		V ans;
+		for (int hash_result = 0; hash_result < 256; ++hash_result) {
+			string des = src + "_" + toString(hash_result) + ".bin";
+			if (!exist(des)) {
+				continue;
+			}
+			else {
+				fstream drawer(des, fstream::in | fstream::binary);
+				int s;
+				drawer.read(
+					reinterpret_cast<char*>(&s),
+					sizeof(int)
+					);
+				for (int i = 0; i < s; ++i) {
+					K nw;
+					drawer.seekg(sizeof(K), ios::cur);
+					drawer.read(
+						reinterpret_cast<char*>(&ans),
+						sizeof(V)
+						);
+					ret.push_back(ans);
+				}
+				drawer.close();
+			}
+		}
+		return ret;
+	}
 
 	void save(const K& key, const V& value) {
 		for (auto i : findall(key)) {

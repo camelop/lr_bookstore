@@ -152,6 +152,7 @@
     <ClInclude Include="database.hpp" />
     <ClInclude Include="interface.hpp" />
     <ClInclude Include="lstring.hpp" />
+    <ClInclude Include="stringTo.hpp" />
     <ClInclude Include="user.hpp" />
     <ClInclude Include="warehouse.hpp" />
   </ItemGroup>
