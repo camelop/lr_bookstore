@@ -38,5 +38,8 @@
     <ClInclude Include="interface.hpp">
       <Filter>源文件</Filter>
     </ClInclude>
+    <ClInclude Include="warehouse.hpp">
+      <Filter>源文件</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

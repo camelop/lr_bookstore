@@ -6,6 +6,7 @@
 #include<fstream>
 #include "database.hpp"
 #include "user.hpp"
+#include "warehouse.hpp"
 
 using namespace std;
 
@@ -14,7 +15,7 @@ enum optype {
 	opload,opexit,
 	opsu,oplogout,opuseradd,opregister,opdelete,oppasswd,
 	opselect,opmodify,opimport,opshow,opbuy,
-	opreport
+	opreport,oplog
 };
 map<string, optype> opcode;
 
@@ -33,6 +34,7 @@ void initOpcode() {
 	opcode["show"] = opshow;
 	opcode["buy"] = opbuy;
 	opcode["report"] = opreport;
+	opcode["log"] = oplog;
 }
 
 
@@ -41,7 +43,9 @@ private:
 #ifdef LR_DEBUG
 public:
 #endif
+	string selected;
 	UserSystem us;
+	Warehouse wh;
 	vector<string> parse(const string& message) {
 		string temp = "";
 		vector<string> ret;
@@ -150,12 +154,26 @@ public:
 			break;
 
 		case opselect:
+			if (us.access() < 3) invalid;
+			if (words.size() != 2) invalid;
+			{
+				selected = words[1];
+			}
+			break;
+
 		case opmodify:
+			//TODO
 		case opimport:
+			//TODO
 		case opshow:
+			//TODO
 		case opbuy:
+			//TODO
 		case opreport:
-			us.display();
+			cout << "invictus maneo" << endl;
+			break;
+		case oplog:
+			cout << "A piece of wood here" << endl;
 			break;
 		default:
 			invalid;
