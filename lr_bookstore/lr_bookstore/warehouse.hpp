@@ -3,6 +3,7 @@
 #include<iostream>
 #include<iomanip>
 #include<map>
+#include<algorithm>
 #include"lstring.hpp"
 #include"database.hpp"
 #include"stringTo.hpp"
@@ -309,8 +310,25 @@ public:
 		return true;
 	}
 	bool show_finance(int time) {
-		// TODO
-		cout << "I don't wanna write anymore..." << endl;
+		if (time == -1) time = log_size;
+		double pos = 0;
+		double neg = 0;
+		for (int i = log_size - 1; i >= max(0, log_size - time); --i) {
+			double cur;
+			log_db.find(i, cur);
+			if (cur > 0) {
+				pos += cur;
+			}
+			else {
+				neg -= cur;
+			}
+		}
+		cout << "+ ";
+		cout << fixed << setprecision(2) << pos;
+		cout << " - ";
+		cout << fixed << setprecision(2) << neg;
+		cout << '\n';
+		cout.flush();
 		return true;
 	}
 	bool buy(

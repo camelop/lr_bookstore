@@ -9,7 +9,6 @@ extern map<string, optype> opcode;
 
 
 int main() {
-#define TEST_INTERFACE
 # ifdef TEST_DB
 	DB<lstring<20>, lstring<20>, lstring_hash> db("db1");
 	db.save("v1", "hello");
@@ -28,16 +27,25 @@ int main() {
 	userSystem.login("lxy", "lxy");
 	userSystem.login("lxy", "yxl");
 #endif
-#ifdef TEST_INTERFACE
-	initOpcode();
-	Interface interface;
-	string mes;
-	interface.receive("su root sjtu");
-	cout << interface.currentUser() << "@";
-	while (getline(cin, mes)) {
-		cout.flush();
-		interface.receive(mes);
+	fstream fin("command.txt");
+	if (!fin) {
+		initOpcode();
+		Interface interface;
+		string mes;
+		interface.receive("su root sjtu");
 		cout << interface.currentUser() << "@";
+		while (getline(cin, mes)) {
+			cout.flush();
+			interface.receive(mes);
+			cout << interface.currentUser() << "@";
+		}
 	}
-#endif
+	else {
+		initOpcode();
+		Interface interface;
+		string mes;
+		interface.receive("su root sjtu");
+		interface.receive("load command.txt");
+	}
+	return 0;
 }
