@@ -31,7 +31,7 @@ public:
 		return true;
 	}
 	friend ostream& operator << (ostream& os, const Book& rhs) {
-		if (rhs.quantity == 0) return os;
+		if (rhs.quantity < 0) return os;
 		os << rhs.ISBN << '\t' << rhs.name << '\t' << rhs.author << '\t' << rhs.keywords << '\t';
 		os << fixed << setprecision(2) << rhs.price;
 		os << '\t' << rhs.quantity << "±¾" << '\n';
@@ -121,7 +121,7 @@ public:
 		}
 	}
 	bool modify(
-		const lstring<20> &ISBN,
+		lstring<20> &ISBN,
 		const string& ins //string instruction
 		) {
 		if (ISBN == "") return false;
@@ -130,6 +130,7 @@ public:
 			map<string, string> para = parameters(ins);
 			if (para.count("ISBN")) {
 				nw.ISBN = para["ISBN"];
+				ISBN = nw.ISBN;
 			}
 			else {
 				nw.ISBN = ISBN;
@@ -137,19 +138,27 @@ public:
 			if (para.count("name")) {
 				nw.name = para["name"];
 			}
-			else return false;
+			else {
+				nw.name = "NO NAME";
+			}
 			if (para.count("author")) {
 				nw.author = para["author"];
 			}
-			else return false;
+			else {
+				nw.author = "NO AUTHOR";
+			}
 			if (para.count("keyword")) {
 				nw.keywords = para["keyword"];
 			}
-			else return false;
+			else {
+				nw.author = "NO KEYWORD";
+			}
 			if (para.count("price")) {
 				nw.price = stringToDouble(para["price"]);
 			}
-			else return false;
+			else {
+				nw.price = 0;
+			}
 			isbn_db.save(nw.ISBN, nw);
 			name_db.save(nw.name, nw.ISBN);
 			author_db.save(nw.author, nw.ISBN);
@@ -172,7 +181,7 @@ public:
 			if (para.count("ISBN")) {
 				nwISBN = para["ISBN"];
 				if (isbn_db.find(nwISBN, toReplace)) {
-					if (toReplace.quantity > 0) return false;
+					if (toReplace.quantity >= 0) return false;
 				}
 			}
 
@@ -247,7 +256,7 @@ public:
 						singleKey += i;
 					}
 				}
-				nnw.quantity = 0;
+				nnw.quantity = -1;
 				isbn_db.modify(ISBN, nw, nnw);
 				if (doNotSave) {
 					isbn_db.modify(nwISBN, toReplace, nw);
@@ -255,6 +264,7 @@ public:
 				else {
 					isbn_db.save(nwISBN, nw);
 				}
+				ISBN = nwISBN;
 			}
 			return true;
 			// and other

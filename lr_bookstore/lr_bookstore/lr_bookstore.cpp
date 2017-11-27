@@ -3,6 +3,7 @@
 #include "lstring.hpp"
 #include "user.hpp"
 #include "interface.hpp"
+#define REFRESH_MODE
 
 using namespace std;
 extern map<string, optype> opcode;
@@ -26,6 +27,9 @@ int main() {
 	userSystem.useradd("lxy", "yxl", 3, "liu");
 	userSystem.login("lxy", "lxy");
 	userSystem.login("lxy", "yxl");
+#endif
+#ifdef REFRESH_MODE
+	system("clear.bat");
 #endif
 	fstream fin("command.txt");
 	if (!fin) {

@@ -44,7 +44,7 @@ private:
 #ifdef LR_DEBUG
 public:
 #endif
-	string selected;
+	lstring<20> selected;
 	UserSystem us;
 	Warehouse wh;
 	vector<string> parse(const string& message) {
