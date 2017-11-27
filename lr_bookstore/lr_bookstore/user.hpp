@@ -113,6 +113,7 @@ public:
 		if (id == "root") return false;
 		if (id == cur.id) return false;
 		if (!db.find(id, nw)) return false;
+		if (nw.access == -1) return false;
 		User nnw = nw;
 		nnw.access = -1; // deleted
 		return db.modify(id, nw, nnw);
