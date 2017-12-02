@@ -1,5 +1,6 @@
 #coding=utf-8
 import os
+import time
 exe = 'bookstore'
 
 temp_dir = 'temp'
@@ -11,10 +12,15 @@ test_name = [
     'book test 1',
     'book test 2',
     'book test 3',
+    'file test 1',
+    'pressure test 1',
+    'file test 2',
+    'pressure test 2',
 ]
-test_loc = list(map(lambda x: 'testcase'+str(x),range(1,7)))
+test_loc = list(map(lambda x: 'testcase'+str(x),range(1,11)))
 
 for i in range(6):
+    nw = time.time()
     k = test_name[i]
     loc = test_loc[i]
     os.system('mkdir '+temp_dir)
@@ -26,4 +32,22 @@ for i in range(6):
     if result != 0:
         exit(1)
     os.system('rm -r '+temp_dir)
-    print k,":\t-\033[1;32mACCEPT\033[0m-"
+    print('case '+str(i+1)+': '+str(k)+"\t-\033[1;32mACCEPT\033[0m-  time:"+str(round(time.time()-nw,3))+'s')
+
+for i in range(6,8):
+    nw = time.time()
+    k = test_name[i]
+    loc = test_loc[i]
+    os.system('mkdir '+temp_dir)
+    os.system('cp '+exe+' '+temp_dir+'/bookstore')
+    with open("test_data/"+loc+"/config.txt",'r') as f:
+        s = int(f.readline())
+        for j in range(s):
+            command = 'cp -f '+'test_data/'+loc+'/'+str(j+1)+'.txt '+temp_dir+'/command.txt;cd '+\
+                temp_dir+';./'+'bookstore >> ans.txt 2>> cerr.txt;cd ..'
+            os.system(command)
+    result = os.system('cmp test_data/'+loc+'/ans.txt '+temp_dir+'/ans.txt')
+    if result != 0:
+        exit(1)
+    os.system('rm -r '+temp_dir)
+    print('case '+str(i+1)+': '+str(k)+"\t-\033[1;32mACCEPT\033[0m-  time:"+str(round(time.time()-nw,3))+'s')
