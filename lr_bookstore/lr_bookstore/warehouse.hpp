@@ -37,6 +37,9 @@ public:
 		os << '\t' << rhs.quantity << "±¾" << '\n';
 		return os;
 	}
+	friend bool operator < (const Book& lhs, const Book& rhs) {
+		return lhs.ISBN < rhs.ISBN;
+	}
 };
 
 int int_hash(int x) { return x; }
@@ -107,6 +110,14 @@ private:
 		return ret;
 	}
 public:
+	void display() {
+		isbn_db.show();
+		name_db.show();
+		author_db.show();
+		keyword_db.show();
+		var_db.show();
+		log_db.show();
+	}
 	Warehouse() :
 		isbn_db("w_ISBN"),
 		name_db("w_name"),
@@ -127,9 +138,13 @@ public:
 		if (ISBN == "") return false;
 		Book nw;
 		if (!isbn_db.find(ISBN, nw)) {
+			Book toReplace;
 			map<string, string> para = parameters(ins);
 			if (para.count("ISBN")) {
 				nw.ISBN = para["ISBN"];
+				if (isbn_db.find(nw.ISBN, toReplace)) {
+					if (toReplace.quantity >= 0) return false;
+				}
 				ISBN = nw.ISBN;
 			}
 			else {
@@ -192,16 +207,16 @@ public:
 			if (para.count("name")) {
 				nnw.name = para["name"];
 				name_db.modify(nw.name, ISBN, "");
-				name_db.save(nw.name, ISBN);
+				name_db.save(nnw.name, ISBN);
 			}
 			if (para.count("author")) {
 				nnw.author = para["author"];
 				author_db.modify(nw.author, ISBN, "");
-				author_db.save(nw.author, ISBN);
+				author_db.save(nnw.author, ISBN);
 			}
 			if (para.count("keyword")) {
 				nnw.keywords = para["keyword"];
-				string singleKey;
+				string singleKey="";
 				for (auto i : string(nw.keywords) + "|") {
 					if (i == '|' && singleKey != "") {
 						keyword_db.modify(singleKey, ISBN, "");
@@ -211,6 +226,7 @@ public:
 						singleKey += i;
 					}
 				}
+				singleKey = "";
 				for (auto i : para["keyword"] + "|") {
 					if (i == '|' && singleKey != "") {
 						keyword_db.save(singleKey, ISBN);

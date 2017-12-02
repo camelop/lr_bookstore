@@ -4,6 +4,7 @@
 #include<string>
 #include<fstream>
 #include<vector>
+#include<algorithm>
 using namespace std;
 
 template<typename K, typename V, int(*hashK)(K)>
@@ -144,6 +145,7 @@ public:
 				}
 			}
 			drawer.close();
+			sort(ret.begin(), ret.end());
 			return ret;
 		}
 	}
@@ -175,7 +177,43 @@ public:
 				drawer.close();
 			}
 		}
+		sort(ret.begin(), ret.end());
 		return ret;
+	}
+	
+	void show() {
+		cerr << "* SHOW DATABASE " << src << endl; 
+
+		K key;
+		V ans;
+		for (int hash_result = 0; hash_result < 256; ++hash_result) {
+			string des = src + "_" + toString(hash_result) + ".bin";
+			if (!exist(des)) {
+				continue;
+			}
+			else {
+				fstream drawer(des, fstream::in | fstream::binary);
+				int s;
+				drawer.read(
+					reinterpret_cast<char*>(&s),
+					sizeof(int)
+					);
+				for (int i = 0; i < s; ++i) {
+					drawer.read(
+						reinterpret_cast<char*>(&key),
+						sizeof(K)
+						);
+					drawer.read(
+						reinterpret_cast<char*>(&ans),
+						sizeof(V)
+						);
+					cerr << "KEY: " << key << "\tVALUE: " << ans << endl;
+				}
+				drawer.close();
+			}
+		}
+
+		cerr << endl;
 	}
 
 	void save(const K& key, const V& value) {

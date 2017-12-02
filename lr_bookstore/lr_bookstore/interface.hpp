@@ -78,6 +78,9 @@ public:
 	}
 
 	void receive(const string& message) {
+#ifdef LR_DEBUG
+		cerr << message << endl;
+#endif
 		vector<string> words = parse(message);
 		if (words.empty()) return;
 		if (opcode.count(words[0]) == 0) invalid;
@@ -202,7 +205,9 @@ public:
 			break;
 
 		case opreport:
-			cout << "invictus maneo" << endl;
+			// cout << "invictus maneo" << endl;
+			us.display();
+			wh.display();
 			break;
 
 		case oplog:

@@ -20,6 +20,13 @@ public:
 		if (access != rhs.access) return false;
 		return true;
 	}
+	friend ostream& operator << (ostream& os, const User& rhs) {
+		os << rhs.id << ' ' << rhs.access << ' ' << rhs.passwd << ' ' << rhs.name << endl;
+		return os;
+	}
+	friend bool operator < (const User& lhs, const User& rhs) {
+		return lhs.id < rhs.id;
+	}
 };
 
 class UserSystem {
@@ -142,7 +149,8 @@ public:
 	}
 
 	void display() {
-		cout << "Nothing to show" << endl;
+		db.show();
+		//	cout << "Nothing to show" << endl;
 	}
 };
 #endif

@@ -48,6 +48,9 @@ public:
 	bool operator !=(const lstring& rhs) const {
 		return !(strcmp(data, rhs.data) == 0);
 	}
+	bool operator < (const lstring& rhs) const {
+		return (strcmp(data, rhs.data) < 0);
+	}
 
 	operator string() const{
 		return data;

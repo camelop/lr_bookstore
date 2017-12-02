@@ -1,3 +1,4 @@
+#define LR_DEBUG
 #include <iostream>
 #include "database.hpp"
 #include "lstring.hpp"
