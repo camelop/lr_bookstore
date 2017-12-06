@@ -29,10 +29,14 @@ for i in range(6):
         temp_dir+';./'+'bookstore > ans.txt 2> cerr.txt;cd ..'
     os.system(command)
     result = os.system('cmp test_data/'+loc+'_ans.txt '+temp_dir+'/ans.txt')
-    if result != 0:
-        exit(1)
     os.system('rm -r '+temp_dir)
+    if result != 0:
+        print('case '+str(i+1)+' failed')
+        continue
+        #exit(1)
     print('case '+str(i+1)+': '+str(k)+"\t-\033[1;32mACCEPT\033[0m-  time:"+str(round(time.time()-nw,3))+'s')
+
+import sys
 
 for i in range(6,8):
     nw = time.time()
@@ -48,6 +52,13 @@ for i in range(6,8):
             os.system(command)
     result = os.system('cmp test_data/'+loc+'/ans.txt '+temp_dir+'/ans.txt')
     if result != 0:
+        print('case '+str(i+1)+' failed')
         exit(1)
-    os.system('rm -r '+temp_dir)
     print('case '+str(i+1)+': '+str(k)+"\t-\033[1;32mACCEPT\033[0m-  time:"+str(round(time.time()-nw,3))+'s')
+    os.system('rm '+temp_dir+'/bookstore')
+    os.system('rm '+temp_dir+'/command.txt')
+    if i == 7:
+        sys.stdout.write("\tdatabase size: ")
+        sys.stdout.flush()
+        os.system('du -h --max-depth=1 temp')
+    os.system('rm -r '+temp_dir)

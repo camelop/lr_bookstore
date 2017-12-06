@@ -34,7 +34,7 @@ public:
 		if (rhs.quantity < 0) return os;
 		os << rhs.ISBN << '\t' << rhs.name << '\t' << rhs.author << '\t' << rhs.keywords << '\t';
 		os << fixed << setprecision(2) << rhs.price;
-		os << '\t' << rhs.quantity << "±¾" << '\n';
+		os << '\t' << rhs.quantity << "æœ¬" << '\n';
 		return os;
 	}
 	friend bool operator < (const Book& lhs, const Book& rhs) {
