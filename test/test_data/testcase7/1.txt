@@ -1,11 +1,12 @@
-useradd worker worker_password 3 ÁÖĞñ
+useradd worker worker_password 3 æ—æ—­
 logout
 su worker worker_password
 select 9787559609304
-modify -name="µß¸²Õß£ºÖÜºèµt×Ô´«"
-modify -keyword="ÈËÎï|´«¼Ç" -price=50 -author="ÖÜºèµt"
+modify -name="é¢ è¦†è€…ï¼šå‘¨é¸¿ç¥è‡ªä¼ "
+modify -keyword="äººç‰©|ä¼ è®°" -price=50 -author="å‘¨é¸¿ç¥"
 modify -price=49.8
 select 9787544287722
-modify -name="Ã¢¹û½Ö£¬ÎÒ×Ô¼ºµÄĞ¡Îİ" -keyword="ÎÄÑ§|Ëæ±Ê" -author="É£µÂÀ­¡¤Ï£Ë¹ÄÚÂŞË¿" -price=45.00
+modify -name="èŠ’æœè¡—ï¼Œæˆ‘è‡ªå·±çš„å°å±‹" -keyword="æ–‡å­¦|éšç¬”" -author="æ¡‘å¾·æ‹‰Â·å¸Œæ–¯å†…ç½—ä¸" -price=45.00
 logout
 exit
+

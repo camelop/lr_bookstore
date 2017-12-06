@@ -1,8 +1,8 @@
-useradd worker worker_password 3 ÁÖĞñ
+useradd worker worker_password 3 æ—æ—­
 select 9787544287722
-modify -name="Ã¢¹û½Ö£¬ÎÒ×Ô¼ºµÄĞ¡Îİ" -keyword="ÎÄÑ§|Ëæ±Ê" -author="É£µÂÀ­¡¤Ï£Ë¹ÄÚÂŞË¿" -price=45.00
+modify -name="èŠ’æœè¡—ï¼Œæˆ‘è‡ªå·±çš„å°å±‹" -keyword="æ–‡å­¦|éšç¬”" -author="æ¡‘å¾·æ‹‰Â·å¸Œæ–¯å†…ç½—ä¸" -price=45.00
 select 9787559410443
-modify -name="ÄÚÂ½µºÓì" -keyword="ÎÄÑ§|Ğ¡Ëµ" -author="ËÎ°¢Âü" -price=38
+modify -name="å†…é™†å²›å±¿" -keyword="æ–‡å­¦|å°è¯´" -author="å®‹é˜¿æ›¼" -price=38
 logout
 su worker worker_password
 select 9787559410443
@@ -10,7 +10,7 @@ import 48 233.33
 select 9787544287722
 import 15 150
 logout
-register user0 user0_password Ì·½ø
+register user0 user0_password è°­è¿›
 su user0 user0_password 
 buy 9787559410443 5 
 buy 9787544287722 3

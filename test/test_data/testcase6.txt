@@ -1,16 +1,16 @@
-modify -name="芒果街，我自己的小屋"
+modify -name="鑺掓灉琛楋紝鎴戣嚜宸辩殑灏忓眿"
 import 48 233.33
 select 9787544287722
 modify -ISBN=9787544287723
 select 9787544287722
 modify -ISBN=9787544287723
 select 9787544287723
-modify -name="芒果街，我自己的小屋" -keyword="文学|随笔" -author="桑德拉·希斯内罗丝"
+modify -name="鑺掓灉琛楋紝鎴戣嚜宸辩殑灏忓眿" -keyword="鏂囧|闅忕瑪" -author="妗戝痉鎷壜峰笇鏂唴缃椾笣"
 import 48 233.33
 logout
 show -ISBN=9787544287722
 show -ISBN=9787544287723
-register user0 user0_password 谭进
+register user0 user0_password 璋繘
 su user0 user0_password
 show -ISBN=9787544287723
 buy 9787544287723 0

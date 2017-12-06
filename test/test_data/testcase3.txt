@@ -1,8 +1,8 @@
 Always Challenge Miracles.
-useradd worker0 worker0_password 3 ¶¡Ç«Çå
-useradd worker0 worker0_passworddd 3 ÇåÇ«¶¡
-useradd root2 sjtu2 7 ¹ÜÀíÔ±
-useradd root sjtu 1 ÕæÊµ¹ÜÀíÔ±
+useradd worker0 worker0_password 3 ä¸è°¦æ¸…
+useradd worker0 worker0_passworddd 3 æ¸…è°¦ä¸
+useradd root2 sjtu2 7 ç®¡ç†å‘˜
+useradd root sjtu 1 çœŸå®ç®¡ç†å‘˜
 passwd worker0 worker0_passworddd
 passwd root sjtuuu
 delete user0
@@ -13,7 +13,7 @@ register user__ user___password
 logout
 delete user
 passwd root sjtu
-£¿£¿£¿
+ï¼Ÿï¼Ÿï¼Ÿ
 su worker0 worker0_password
 su worker0 worker0_passworddd
 passwd worker0 worker0_password worker0_password
@@ -25,7 +25,7 @@ su root sjtuuu
 delete worker0
 delete worker0
 delete user0
-useradd user0 user0_password 1 Ò¶·¢
+useradd user0 user0_password 1 å¶å‘
 logout
 su user0 user0_password
 passwd user1 user1_password user1_passworddd
@@ -35,17 +35,17 @@ delete user0
 logout
 su root sjtuuu
 delete user0
-useradd worker1 worker1_password 3 ÁÖ¾ê
-useradd user2 user2_password 1 ³£¾ıÁ«
-register user3 user3_password ¹ùÌÎĞÄ
+useradd worker1 worker1_password 3 æ—å¨Ÿ
+useradd user2 user2_password 1 å¸¸å›è²
+register user3 user3_password éƒ­æ¶›å¿ƒ
 logout
 su user2 user2_password
 logout
 su user3 user3_password
 logout
 su worker1 worker1_password
-useradd user4 user4_password 1 ½ªÆô
-register user5 user5_password ½¯°®Ö¦
+useradd user4 user4_password 1 å§œå¯
+register user5 user5_password è’‹çˆ±æ
 logout
 su user4 user4_password
 logout

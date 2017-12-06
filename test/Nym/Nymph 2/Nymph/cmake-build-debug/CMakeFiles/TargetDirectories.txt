@@ -1,0 +1,3 @@
+/Users/houbohan/Homework/bookstore/Nymph/cmake-build-debug/CMakeFiles/rebuild_cache.dir
+/Users/houbohan/Homework/bookstore/Nymph/cmake-build-debug/CMakeFiles/edit_cache.dir
+/Users/houbohan/Homework/bookstore/Nymph/cmake-build-debug/CMakeFiles/Nymph.dir

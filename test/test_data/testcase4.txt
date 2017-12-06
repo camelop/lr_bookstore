@@ -1,35 +1,35 @@
-useradd worker worker_password 3 ÁÖĞñ
+useradd worker worker_password 3 æ—æ—­
 logout
 su worker worker_password
 select 9787559609303
 modify -ISBN=9787559609304
-modify -name="ÖÜºèµt×Ô´«"
-modify -name="µß¸²Õß£ºÖÜºèµt×Ô´«"
+modify -name="å‘¨é¸¿ç¥è‡ªä¼ "
+modify -name="é¢ è¦†è€…ï¼šå‘¨é¸¿ç¥è‡ªä¼ "
 select 9787559609304
-modify -keyword="ÈËÎï|´«¼Ç" -price=50 -author="ÖÜºèµt"
+modify -keyword="äººç‰©|ä¼ è®°" -price=50 -author="å‘¨é¸¿ç¥"
 modify -price=49.8
 select 9787544287722
-modify -name="Ã¢¹û½Ö£¬ÎÒ×Ô¼ºµÄĞ¡Îİ" -keyword="ÎÄÑ§|Ëæ±Ê" -author="É£µÂÀ­¡¤Ï£Ë¹ÄÚÂŞË¿" -price=45.00
+modify -name="èŠ’æœè¡—ï¼Œæˆ‘è‡ªå·±çš„å°å±‹" -keyword="æ–‡å­¦|éšç¬”" -author="æ¡‘å¾·æ‹‰Â·å¸Œæ–¯å†…ç½—ä¸" -price=45.00
 logout
-register user user_password Ì·½ø
+register user user_password è°­è¿›
 su user user_password
 show -ISBN=9787559609303
 show -ISBN=9787559609304
-show -name="µß¸²Õß£ºÖÜºè×Ô´«"
-show -name="µß¸²Õß£ºÖÜºèµt×Ô´«"
-show -author="ÖÜºèµt"
+show -name="é¢ è¦†è€…ï¼šå‘¨é¸¿è‡ªä¼ "
+show -name="é¢ è¦†è€…ï¼šå‘¨é¸¿ç¥è‡ªä¼ "
+show -author="å‘¨é¸¿ç¥"
 logout
 su worker worker_password
 select 9787559410443
-modify -name="ÄÚÂ½µºÓì" -keyword="ÎÄÑ§|Ğ¡Ëµ" -author="ËÎ°¢Âü" -price=38
+modify -name="å†…é™†å²›å±¿" -keyword="æ–‡å­¦|å°è¯´" -author="å®‹é˜¿æ›¼" -price=38
 import 5 50
 select 9787559609304
 import 10 100
 select 9787544287722
 import 15 150
-show -name="·¬ÇÑÎİ"
-show -name="µß¸²Õß£ºÖÜºèµt×Ô´«"
-show -keyword="ÎÄÑ§"
+show -name="ç•ªèŒ„å±‹"
+show -name="é¢ è¦†è€…ï¼šå‘¨é¸¿ç¥è‡ªä¼ "
+show -keyword="æ–‡å­¦"
 show
 logout
 exit
