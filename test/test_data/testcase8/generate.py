@@ -1,6 +1,6 @@
 #coding=gbk
 file = open('1.txt','w')
-file.write('useradd worker worker_password 3 林旭\nlogout\nsu worker worker_password\n')
+file.write('useradd worker worker_password 3 鏋楁棴\nlogout\nsu worker worker_password\n')
 
 for i in range(1000):
     file.write('select 123456789'+str(i)+'\nmodify -name="'+\

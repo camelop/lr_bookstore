@@ -1,4 +1,4 @@
-useradd worker worker_password 3 林旭
+useradd worker worker_password 3 鏋楁棴
 logout
 su worker worker_password
 select 1234567890
